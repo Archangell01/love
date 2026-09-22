@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>For you 💘</title>
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background: #4b0505;
+            font-family: Arial, sans-serif;
+            overflow: hidden;
+        }
+        button {
+            padding: 20px 40px;
+            font-size: 24px;
+            background: #770606;
+            color: white;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            box-shadow: 0 5px 20px
+rgba(60, 16, 24, 0.5);
+            transition: 0.3s;
+        }
+        button:hover {
+            transform: scale(1.1);
+            background: #b60202;
+        }
+        #love {
+            display: none;
+            font-size: 60px;
+            color: #b60202;
+            margin-top: 40px;
+            text-align: center;
+            font-weight: bold;
+        }
+        .heart {
+            position: absolute;
+            font-size: 30px;
+            animation: float 3s ease-in infinite;
+            pointer-events: none;
+            bottom: 0;
+        }
+        @keyframes float {
+            0% { transform: translateY(0) scale(0.5); opacity: 1; }
+            100% { transform: translateY(-100vh) scale(1.5); opacity: 0; } 
+        }
+    </style>
+</head>
+<body>
+    <button
+onclick="showlove()">Подглядеть</button>
+    <div id="love">I love you ❤️‍🩹</div>
+
+    <script>
+        function showlove() {
+
+document.getElementById('love').style.display = 'block' ;
+
+            setInterval(() => {
+                const heart = document.createElement('div');
+                heart.className = 'heart';
+
+                const emojis = ['❤️‍🔥', '💖', '💕', '💗', '💓', '💘', '💝'];
+                heart.innerText = emojis[Math.floor(Math.random() * emojis.length)];
+
+                heart.style.left = Math.random() * 100 + 'vw';
+                heart.style.animationDuration = (2 + Math.random() * 2) + 's';
+
+                document.body.appendChild(heart);
+
+                setTimeout(() => heart.remove(), 4000);
+            }, 200);
+        }
+    </script>
+</body>
+</html>
